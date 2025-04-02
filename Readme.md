@@ -1,6 +1,3 @@
-Okay, here is a comprehensive README file for your ParsLang project, incorporating the details from your provided files and requests.
-
-```markdown
 # ParsLang 🚀
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <!-- Add a license if you choose one -->
