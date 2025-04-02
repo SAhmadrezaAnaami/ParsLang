@@ -1,0 +1,11 @@
+let a = 1
+let b = 1
+
+print(a)
+print(b)
+for n = 0 to 100 then
+    let c = a + b
+    let b = a
+    let a = c
+    print(a)
+end

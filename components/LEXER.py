@@ -6,6 +6,7 @@ from components.ERRORS import (
 	IllegalCharError,
 	ExpectedCharError
 )
+
 from components.POSITION import Position 
 from components.TOKENS import *
 from components.CONSTANTS import *
@@ -35,11 +36,18 @@ class Lexer:
 		while self.current_char != None:
 			if self.current_char in ' \t':
 				self.advance()
+			elif self.current_char == "#":
+				self.skip_comment()
 			elif self.current_char in LETTERS+NONENGLISH_LETTERS:
 				tokens.append(self.make_identifier())
 			elif self.current_char in DIGITS+NONENGLISH_DIGITS:
 				tokens.append(self.make_number())
-			elif self.current_char in "+-()*%^/":
+			elif self.current_char == '"':
+				tokens.append(self.make_string())
+			elif self.current_char in ";\n":
+				tokens.append(Token(TT_NEWLINE, pos_start=self.pos))
+				self.advance()
+			elif self.current_char in "+()*%^/,[]":
 				tokens.append(makeToken(self.current_char,self.pos))
 				self.advance()
 			elif self.current_char == "!":
@@ -52,6 +60,8 @@ class Lexer:
 				tokens.append(self.make_less_than())
 			elif self.current_char == ">":
 				tokens.append(self.make_grater_than())
+			elif self.current_char == "-":
+				tokens.append(self.make_minus_or_arrow())
 			else:
 				pos_start = self.pos.copy()
 				char 	  = self.current_char
@@ -139,3 +149,47 @@ class Lexer:
 			tt_type = TT_GTE
    
 		return Token(tt_type, pos_start=pos_start, pos_end=self.pos)
+
+	def make_minus_or_arrow(self):
+		tok_type = TT_MINUS
+		pos_start = self.pos.copy()
+		self.advance()
+  
+		if self.current_char == ">":
+			self.advance()
+			tok_type = TT_ARROW
+   
+		return Token(tok_type, pos_start=pos_start, pos_end=self.pos)
+
+	def make_string(self):
+		string = ''
+		pos_start = self.pos.copy()
+		escape_character = False
+		self.advance()
+  
+		escape_characters = {
+			'n' : '\n',
+			't' : '\t'
+		}
+
+		while self.current_char != None and (self.current_char != '"' or escape_character):
+			if escape_character :
+				string += escape_characters.get(
+					self.current_char, self.current_char
+				)
+				escape_character = False
+			else:
+				if self.current_char == '\\':
+					escape_character = True
+				else:
+					string += self.current_char
+			self.advance()
+   
+		self.advance()
+		return Token(TT_STRING, string, pos_start, self.pos)
+
+	def skip_comment(self):
+		self.advance()
+		while self.current_char != '\n':
+			self.advance()
+		self.advance()

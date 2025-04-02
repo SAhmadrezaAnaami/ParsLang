@@ -11,6 +11,7 @@ from components.CONSTANTS import *
 
 TT_INT		  	= 'INT'
 TT_FLOAT      	= 'FLOAT'
+TT_STRING      	= 'STRING'
 TT_PLUS       	= 'PLUS'
 TT_MINUS      	= 'MINUS'
 TT_MUL        	= 'MUL'
@@ -29,21 +30,31 @@ TT_LT			= "LT"
 TT_LTE			= "LTE"
 TT_GT	 		= "GT"
 TT_GTE	 		= "GTE"
+TT_COMMA        = "COMMA"
+TT_ARROW        = "ARROW"
+TT_LSQUARE      = "LSQUARE"
+TT_RSQUARE      = "RSQUARE"
+TT_NEWLINE      = "NEWLINE"
 
 KEYWORDS = (
     [
-    ]               +
-    WHILE_STATEMENTS+
-    STEP_STATEMENTS +
-    TO_STATEMENTS	+
-    FOR_STATEMENTS  +
-    IF_STATEMENTS   +
-    ELIF_STATEMENTS +
-    ELSE_STATEMENTS +
-    THEN_STATEMENTS +
-    VAR_STATEMENTS  +
-    AND_STATEMENTS  +
-    OR_STATEMENTS   +
+    ]                   +
+    RETURN_STATEMENTS   +
+    CONTINUE_STATEMENTS +
+    BREAK_STATEMENTS    +
+    END_STATEMENTS      +
+    FUN_STATEMENTS      +
+    WHILE_STATEMENTS    +
+    STEP_STATEMENTS     +
+    TO_STATEMENTS	    +
+    FOR_STATEMENTS      +
+    IF_STATEMENTS       +
+    ELIF_STATEMENTS     +
+    ELSE_STATEMENTS     +
+    THEN_STATEMENTS     +
+    VAR_STATEMENTS      +
+    AND_STATEMENTS      +
+    OR_STATEMENTS       +
     NOT_STATEMENTS
 )
 

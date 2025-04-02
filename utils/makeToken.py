@@ -34,7 +34,12 @@ def makeToken(current_char:str , pos:Position):
         t = Token(TT_RPAREN, pos_start=pos)
     elif current_char == '=':
         t = Token(TT_EQ, pos_start=pos)
-    
+    elif current_char == ',':
+        t = Token(TT_COMMA, pos_start=pos)
+    elif current_char == '[':
+        t = Token(TT_LSQUARE, pos_start=pos)
+    elif current_char == ']':
+        t = Token(TT_RSQUARE, pos_start=pos)
     
     
     return t
