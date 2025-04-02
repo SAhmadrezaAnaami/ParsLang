@@ -13,14 +13,12 @@ Let's look at a classic example: calculating Fibonacci numbers.
 **1. Using English Keywords (`fibo.txt`)**
 
 ```python
-# Calculate the first few Fibonacci numbers
 var a = 0
 var b = 1
 
 print(a)
 print(b)
 
-# Loop to generate the next numbers
 for n = 1 to 10 then
     var temp = a + b
     a = b
@@ -34,21 +32,20 @@ print("Done!")
 **2. Using Persian Keywords (`fibo-fa.txt` - equivalent logic)**
 
 ```python
-# محاسبه چند عدد اول فیبوناچی
-موگوم a = 0  # 'موگوم' is equivalent to 'var'
+
+موگوم a = 0
 موگوم b = 1
 
-bechup(a)  # 'bechup' is a custom alias for 'print'
+bechup(a)
 bechup(b)
 
-# حلقه برای تولید اعداد بعدی
-واسه n = 1 تا 10 اووخ  # 'واسه' = for, 'تا' = to, 'اووخ' = then
+
+واسه n = 1 تا 10 اووخ
     موگوم temp = a + b
     a = b
     b = temp
     bechup(b)
-تمام  # 'تمام' = end
-
+تمام 
 bechup("تمام شد!")
 ```
 
