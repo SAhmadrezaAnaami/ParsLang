@@ -93,7 +93,7 @@ Declare variables using `var` (or aliases like `let`, `موگوم`). Assignment 
 var message = "Hello, ParsLang!"
 var count = 10
 var pi = 3.14
-var x # Defaults to 0
+var x
 ```
 
 ### Conditional Statements (`if`/`elif`/`else`)
@@ -103,7 +103,7 @@ Supports multi-line blocks with `then` and `end`, or single-line expressions.
 ```python
 var grade = 75
 
-# Multi-line
+
 if grade >= 90 then
     print("A")
 elif grade >= 80 then
@@ -112,11 +112,11 @@ else
     print("C or lower")
 end
 
-# Single-line (result is the value of the expression)
+
 var result = if grade > 50 then "Pass" else "Fail"
 print(result)
 
-# Using Persian keywords
+
 اگر grade >= 90 اووخ
     bechup("عالی")
 مگر grade >= 80 اووخ
@@ -131,21 +131,20 @@ print(result)
 **For Loop:** Iterates over a range of numbers.
 
 ```python
-# Multi-line
+
 for i = 1 to 5 then
     print(i)
 end
 
-# With step
+
 for j = 10 to 0 step -2 then
     print(j)
 end
 
 # Single-line (creates a list of results)
 var squares = for x = 1 to 4 then x * x
-print(squares) # Output: [1, 4, 9, 16]
+print(squares)
 
-# Using Persian keywords
 واسه i = 1 تا 3 اووخ
     bechup(i)
 تمام
@@ -155,17 +154,13 @@ print(squares) # Output: [1, 4, 9, 16]
 
 ```python
 var counter = 0
-# Multi-line
 while counter < 3 then
     print(counter)
     counter = counter + 1
 end
 
-# Single-line (creates a list of results)
 var vals = while counter < 5 then counter = counter + 1 # Note: depends on expression evaluated
-# (Use with caution for single-line results, multi-line is clearer for state changes)
 
-# Using Persian keywords
 هنگامیکه counter < 6 اووخ
     bechup(counter)
     counter = counter + 1
@@ -177,14 +172,12 @@ var vals = while counter < 5 then counter = counter + 1 # Note: depends on expre
 Define reusable blocks of code.
 
 ```python
-# Multi-line function
 fun greet(name)
     print("Hello, " + name)
 end
 
 greet("World")
 
-# Function with return
 fun add(x, y)
     return x + y
 end
@@ -192,15 +185,12 @@ end
 var sum = add(5, 3)
 print(sum) # Output: 8
 
-# Arrow function (single expression, implicit return)
 fun multiply(a, b) -> a * b
-print(multiply(4, 5)) # Output: 20
+print(multiply(4, 5))
 
-# Anonymous function assigned to a variable
 var power = fun (base, exp) -> base ^ exp
 print(power(2, 3)) # Output: 8
 
-# Using Persian keywords
 تابع سلام(اسم)
     bechup("سلام، " + اسم)
 تمام
@@ -216,19 +206,18 @@ Ordered collections of items.
 var my_list = [1, "two", 3.0, true]
 print(my_list)
 
-# List operations via built-ins
-append(my_list, "new") # Add item
+append(my_list, "new")
 print(my_list)
 
-var item = pop(my_list, 1) # Remove and return item at index 1
-print(item)      # Output: "two"
+var item = pop(my_list, 1)
+print(item)
 print(my_list)
 
 var another_list = [4, 5]
-extend(my_list, another_list) # Append elements from another list
+extend(my_list, another_list)
 print(my_list)
 
-print(len(my_list)) # Get length
+print(len(my_list))
 ```
 
 ## 🔧 Built-in Functions
@@ -345,6 +334,7 @@ The interpreter is broken down into several key components:
 *   [ ] **Unit Tests:** Develop a comprehensive test suite to ensure correctness and prevent regressions.
 *   [ ] **Documentation:** Auto-generate documentation from code comments or write more detailed language specs.
 *   [ ] **Modules/Imports:** Add a system for importing code from other ParsLang files.
+*   [ ] **Comments Bug Fix** fix comments when have multiline and when have comments infront of an statemnet.
 
 ## 🙏 Contributing
 
@@ -366,6 +356,3 @@ Ahmad Reza Anaami - ahmadrezaanaami@gmail.com
 Feel free to reach out with questions, suggestions, or feedback!
 
 ## 📜 License
-
-[Specify Your License Here - e.g., MIT License]
-
